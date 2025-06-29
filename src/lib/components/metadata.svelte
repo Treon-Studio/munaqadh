@@ -1,12 +1,14 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { siteConfig } from '$lib/config';
+import { page } from "$app/stores";
+import { siteConfig } from "$lib/config";
 
-	const title = $derived(
-		$page.data?.title ? `${$page.data.title} | ${siteConfig.name}` : siteConfig.name
-	);
+const title = $derived(
+	$page.data?.title
+		? `${$page.data.title} | ${siteConfig.name}`
+		: siteConfig.name,
+);
 
-	const description = $derived($page.data?.description ?? siteConfig.description);
+const description = $derived($page.data?.description ?? siteConfig.description);
 </script>
 
 <svelte:head>

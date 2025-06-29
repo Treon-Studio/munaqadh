@@ -1,1 +1,1 @@
-export { default as Metadata } from './metadata.svelte';
+export { default as Metadata } from "./metadata.svelte";

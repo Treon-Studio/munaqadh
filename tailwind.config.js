@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: ["./src/**/*.{html,js,svelte,ts}"],
 	future: {
-		hoverOnlyWhenSupported: true
+		hoverOnlyWhenSupported: true,
 	},
 	theme: {
-		extend: {}
+		extend: {},
 	},
-	plugins: []
+	plugins: [],
 };
