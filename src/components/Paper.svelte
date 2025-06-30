@@ -3,6 +3,7 @@ import ContactUs from './ContactUs.svelte'
 import Footer from './Footer.svelte'
 import Campaign from './Campaign.svelte'
 </script>
+
 <style type="text/scss">
 
 #notebook-paper {
@@ -42,7 +43,6 @@ import Campaign from './Campaign.svelte'
     top:0;
     left:0;
     h1 {
-      @apply text-4xl font-semibold;
       padding:7.2rem 2rem 0 2.75rem;
     }
   }
@@ -70,7 +70,6 @@ import Campaign from './Campaign.svelte'
          header {
             height:11rem;
              h1 {
-                 @apply text-5xl;
                  padding:9rem 2rem 0 10.75rem;
              }
          }

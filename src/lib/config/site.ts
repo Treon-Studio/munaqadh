@@ -2,12 +2,12 @@
 
 
 export const siteConfig = {
-	name: "Boileplate",
+	name: "Munaqadh",
 	url: import.meta.env.DEV ? "dev-url" : "production-url",
-	description: "Boilerplate for SvelteKit",
+	description: "Munaqadh",
 	imageUrl: "",
-	keywords: ["boilerplate", "svelte", "sveltekit"],
-	author: "SxYxuse",
+	keywords: ["munaqadh", "svelte", "sveltekit"],
+	author: "Ridho",
 	themeColor: "#110F15",
 };
 
