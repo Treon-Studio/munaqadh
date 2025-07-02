@@ -4,7 +4,7 @@
 
 <!-- Contact Section -->
 <section>
-  <div class="notebook-paper">
+  <div class="">
     <div class="content-block bg-primary/5 rounded-lg p-8">
       <h3 class="handwritten-title text-xl text-foreground text-center mb-6">
         Hubungi Kami

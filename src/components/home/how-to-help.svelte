@@ -4,7 +4,7 @@
 
 <!-- Cara Membantu Section -->
 <section>
-  <div class="notebook-paper">
+  <div class="">
     <div class="content-block">
       <h2 class="handwritten-title text-3xl text-foreground mb-4">
         Cara Membantu
