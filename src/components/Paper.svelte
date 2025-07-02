@@ -2,6 +2,11 @@
 import ContactUs from './ContactUs.svelte'
 import Footer from './Footer.svelte'
 import Campaign from './Campaign.svelte'
+import HeroSection from './home/hero.svelte';
+import KeyFeatures from './home/why-choose-us.svelte';
+import AboutSection from './home/about.svelte';
+import CaraMembantuSection from './home/how-to-help.svelte';
+import ContactSection from './home/contact.svelte';
 </script>
 
 <style type="text/scss">
@@ -9,7 +14,7 @@ import Campaign from './Campaign.svelte'
 #notebook-paper {
   width: 100%;
   max-width:980px;
-  height:2309px;
+  height:5309px;
   background: linear-gradient(to bottom,white 31px,#00b0d7 1px);
   margin:0 auto;
   background-size: 100% 32px;
@@ -84,14 +89,18 @@ import Campaign from './Campaign.svelte'
 
 <div id="notebook-paper">
   <header>
-    <h1>Fancy Title</h1>
+    <img class="img-hero" src="images/photo__hello.png" alt="hello from us!" width="503"/>
   </header>
   <div id="content">
     <div class="hipsum">
+      <HeroSection />
+      <KeyFeatures />
+      <CaraMembantuSection />
+      <ContactSection />
     <p>Intelligentsia lo-fi pug Austin.  Shabby chic asymmetrical jean shorts, 
     twee stumptown bespoke art party keffiyeh High Life PBR 90's mumblecore.  Meggings Echo Park narwhal you probably haven't heard of them,
     viral locavore Pinterest keytar.  Master cleanse Neutra Marfa cornhole roof party, seitan ennui Kickstarter fingerstache.</p>
-    <img src="images/photo__hello.png" alt="hello from us!" width="503"/>
+
     <p>Forage selfies Shoreditch farm-to-table swag.
       YOLO Vice organic, Brooklyn meggings banh mi art party.  Occupy flexitarian freegan mustache shabby chic hoodie normcore.  Vinyl chia gastropub, asymmetrical fingerstache sartorial ennui aesthetic hella farm-to-table Blue Bottle.  Raw denim cliche semiotics, letterpress bicycle rights cornhole art party YOLO yr Shoreditch leggings brunch fap crucifix.  Gentrify mustache leggings ethnic roof party, 
       shabby chic viral Wes Anderson 3 wolf moon Tonx ugh sustainable photo booth master cleanse meggings. 
