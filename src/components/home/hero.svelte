@@ -9,13 +9,11 @@
         Sebuah inisiatif dari TreonStudio untuk membantu anak-anak yatim dan masyarakat tunawisma melalui program-program bantuan berkelanjutan dengan visi menjadi organisasi charity terdepan dalam memberikan harapan dan mengubah kehidupan mereka menjadi lebih baik dan berdaya, serta bermisi memberikan bantuan pendidikan, kesehatan, dan kebutuhan pokok, mendorong kemandirian dan pemberdayaan, dan membangun support system berkelanjutan.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-        <button class="btn">
-          <span style="margin-right: 0.5rem">♥</span>
+        <button class="paper-btn btn-primary text-white">
           Mulai Berdonasi
         </button>
-        <button class="btn btn-secondary">
-          <span style="margin-right: 0.5rem">👥</span>
-          Pelajari Lebih Lanjut
+        <button class="paper-btn btn-primary-outline">
+          Hubungi Kami
         </button>
       </div>
     </div>

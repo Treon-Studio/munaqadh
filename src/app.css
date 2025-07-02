@@ -2,7 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Patrick+Hand:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Reenie+Beanie');
-
+@import url("https://fonts.googleapis.com/css?family=Neucha|Patrick+Hand+SC&display=swap");
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -53,8 +53,8 @@
   --card-foreground: #f8fafc;
   --popover: #1e293b;
   --popover-foreground: #f8fafc;
-  --primary: #3b82f6;
-  --primary-foreground: #f8fafc;
+--primary: #3b82f6;
+--primary-foreground: #f8fafc;
   --secondary: #1e293b;
   --secondary-foreground: #f8fafc;
   --muted: #1e293b;
@@ -410,15 +410,14 @@ html {
 /**
   Global PaperCSS Config
 */
-@import url("https://fonts.googleapis.com/css?family=Neucha|Patrick+Hand+SC&display=swap");
 html {
-  --primary: #41403e;
+  --primary: #0b74d5;
   --secondary: #0b74d5;
   --success: #86a361;
   --warning: #ddcd45;
   --danger: #a7342d;
   --muted: #868e96;
-  --primary-light: #cdcccb;
+  --primary-light: #d8ebfd;
   --secondary-light: #d8ebfd;
   --success-light: #d5dfc8;
   --warning-light: #f5f0c6;
@@ -451,7 +450,7 @@ html {
   --main-background: white;
   --main-background-light: white;
   --black: black;
-  --primary-text: #272625;
+  --primary-text: #0b74d5;
   --secondary-text: #085aa5;
   --success-text: #4a5a35;
   --warning-text: #746a15;
