@@ -1,4 +1,3 @@
-import axios from 'axios';
 import type { NextAuthOptions } from 'next-auth';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -15,41 +14,37 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        try {
-          const whatsapp = credentials?.whatsapp ?? '';
-          const password = credentials?.password ?? '';
-          if (!whatsapp || !password) return null;
-          const response = await axios.post(
-            'https://api-zycas.eling.my.id/api/employee/token',
-            {
-              phone: whatsapp,
-              password: password,
-            },
-            {
-              headers: {
-                accept: 'application/json',
-                'x-device-id': '1',
-                'x-store-id': '1',
-                'x-organization-id': '1',
-                'Content-Type': 'application/json',
-              },
-            }
-          );
-
-          const data = response.data;
-
-          if (data?.token) {
-            return {
-              id: whatsapp,
-              whatsapp: whatsapp,
-              token: data.token,
-              role: data.role || 'admin',
-            };
-          }
-          return null;
-        } catch (_e) {
-          return null;
+        // Mock user data
+        const mockUsers = [
+          {
+            whatsapp: '08123456789',
+            password: 'mockpassword',
+            id: '08123456789',
+            token: 'mock-token-admin',
+            role: 'admin',
+          },
+          {
+            whatsapp: '08129876543',
+            password: 'mockuser',
+            id: '08129876543',
+            token: 'mock-token-user',
+            role: 'user',
+          },
+        ];
+        const whatsapp = credentials?.whatsapp ?? '';
+        const password = credentials?.password ?? '';
+        const user = mockUsers.find(
+          (u) => u.whatsapp === whatsapp && u.password === password
+        );
+        if (user) {
+          return {
+            id: user.id,
+            whatsapp: user.whatsapp,
+            token: user.token,
+            role: user.role,
+          };
         }
+        return null;
       },
     }),
   ],
@@ -64,36 +59,19 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        const customUser = user as {
-          id: string;
-          role?: string;
-          name?: string;
-          token?: string;
-          organization?: string;
-        };
-        token.id = customUser.id;
-        if (customUser.role) token.role = customUser.role;
-        if (customUser.name) token.name = customUser.name;
-        if (customUser.token) token.token = customUser.token;
+        token.id = user.id;
+        token.role = user.role;
+        token.name = user.whatsapp;
+        token.token = user.token;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        const user = session.user as {
-          id?: string;
-          role?: string;
-          name?: string;
-          email?: string;
-          image?: string;
-          organization?: boolean;
-        };
-        user.id = token.id as string;
-        user.role = (token as { role?: string }).role as string;
-        user.name = (token as { name?: string }).name as string;
-        if (token.token) {
-          session.token = (token as { token?: string }).token as string;
-        }
+        session.user.id = token.id;
+        session.user.role = token.role;
+        session.user.name = token.name;
+        session.token = token.token;
       }
       return session;
     },
