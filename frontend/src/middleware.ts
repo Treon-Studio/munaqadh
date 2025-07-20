@@ -37,6 +37,14 @@ export default async function middleware(request: NextRequest) {
 
   // Redirect ke add organization jika token tidak ada dan route bukan add/select org
   if (token && pathname === ROUTES.SIGN_IN) {
+    // Role-based redirect
+    if (token.role === 'admin') {
+      return redirect('/d', request);
+    }
+    if (token.role === 'user') {
+      return redirect('/u', request);
+    }
+    // Default fallback
     return redirect(ROUTES.DASHBOARD, request);
   }
 

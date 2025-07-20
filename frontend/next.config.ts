@@ -7,11 +7,6 @@ import './src/libs/Env';
 const baseConfig: NextConfig = {
   async redirects() {
     return [
-      {
-        source: '/',
-        destination: '/dashboard',
-        permanent: false, // Use true if this should be a permanent redirect (308)
-      },
     ];
   },
   eslint: {

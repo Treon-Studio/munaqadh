@@ -1,4 +1,3 @@
-import axios from 'axios';
 import type { NextAuthOptions } from 'next-auth';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -15,41 +14,28 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        try {
-          const whatsapp = credentials?.whatsapp ?? '';
-          const password = credentials?.password ?? '';
-          if (!whatsapp || !password) return null;
-          const response = await axios.post(
-            'https://api-zycas.eling.my.id/api/employee/token',
-            {
-              phone: whatsapp,
-              password: password,
-            },
-            {
-              headers: {
-                accept: 'application/json',
-                'x-device-id': '1',
-                'x-store-id': '1',
-                'x-organization-id': '1',
-                'Content-Type': 'application/json',
-              },
-            }
-          );
-
-          const data = response.data;
-
-          if (data?.token) {
-            return {
-              id: whatsapp,
-              whatsapp: whatsapp,
-              token: data.token,
-              role: data.role || 'admin',
-            };
-          }
-          return null;
-        } catch (_e) {
-          return null;
+        // Mock user data
+        const mockUser = {
+          whatsapp: '08123456789',
+          password: 'mockpassword',
+          id: '08123456789',
+          token: 'mock-token',
+          role: 'admin',
+        };
+        const whatsapp = credentials?.whatsapp ?? '';
+        const password = credentials?.password ?? '';
+        if (
+          whatsapp === mockUser.whatsapp &&
+          password === mockUser.password
+        ) {
+          return {
+            id: mockUser.id,
+            whatsapp: mockUser.whatsapp,
+            token: mockUser.token,
+            role: mockUser.role,
+          };
         }
+        return null;
       },
     }),
   ],

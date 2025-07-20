@@ -1,13 +1,12 @@
 'use client';
 
-import { useTranslation } from '@/libs/i18n';
+
 import NextError from 'next/error';
 
 export default function GlobalError() {
-  const { locale } = useTranslation();
 
   return (
-    <html lang={locale}>
+    <html>
       <body>
         {/* `NextError` is the default Next.js error page component. Its type
         definition requires a `statusCode` prop. However, since the App Router
