@@ -11,6 +11,7 @@ import { getServerT } from '@/libs/server-i18n';
 import { cn } from '@/libs/utils';
 import type { Metadata, Viewport } from 'next';
 import { cookies } from 'next/headers';
+import { DM_Sans } from "next/font/google"
 
 import '@/styles/global.css';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
@@ -23,6 +24,13 @@ const META_THEME_COLORS = {
   light: '#ffffff',
   dark: '#09090b',
 };
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  adjustFontFallback: false,
+})
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getServerT('common');
@@ -55,7 +63,7 @@ export default async function RootLayout({
           'bg-background overflow-hidden overscroll-none font-sans antialiased',
           activeThemeValue ? `theme-${activeThemeValue}` : '',
           isScaled ? 'theme-scaled' : '',
-          fontVariables
+          dmSans.className
         )}
       >
         <NuqsAdapter>

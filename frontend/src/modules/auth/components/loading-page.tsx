@@ -9,7 +9,7 @@ import { SidebarInset, SidebarProvider } from '@/components/sidebar/sidebar';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Zycash Dashboard',
+  title: 'Munaqadh',
   description: 'Dashboard Zycash',
 };
 

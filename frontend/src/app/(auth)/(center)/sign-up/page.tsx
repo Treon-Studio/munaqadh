@@ -1,145 +1,73 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function SignUpPage() {
+export default function RegisterPage() {
   const router = useRouter();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [message, setMessage] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [whatsapp, setWhatsapp] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("user");
+  const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-    setError('');
-    setMessage('');
-
-    try {
-      // In a real application, you would send a request to your API to create the user
-      // For this mock version, we'll just show a success message and redirect to sign-in
-
-      // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      setMessage('Account created successfully! You can now sign in.');
-
-      // Auto-redirect to sign-in page after a brief delay
-      setTimeout(() => {
-        router.push('/sign-in');
-      }, 1500);
-    } catch (error) {
-      setError(`Something went wrong. Please try again ${String(error)}`);
-      setIsLoading(false);
+    // Mock registration: just redirect to login with pre-filled creds
+    if (!whatsapp || !password) {
+      setError("WhatsApp and password are required");
+      return;
     }
+    // In real app, save to DB. Here, just go to login
+    router.push(`/sign-in?whatsapp=${encodeURIComponent(whatsapp)}&password=${encodeURIComponent(password)}&role=${role}`);
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
-          Create an account
-        </h2>
-        <p className="mt-2 text-center text-sm text-gray-500">
-          This is a mock sign-up form for demonstration purposes only.
-        </p>
-      </div>
-
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        {error && (
-          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
-            {error}
-          </div>
-        )}
-
-        {message && (
-          <div className="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded">
-            {message}
-          </div>
-        )}
-
-        <form className="space-y-6" onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium leading-6">
-              Full Name
-            </label>
-            <div className="mt-2">
-              <input
-                id="name"
-                name="name"
-                type="text"
-                autoComplete="name"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium leading-6">
-              Email address
-            </label>
-            <div className="mt-2">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between">
-              <label htmlFor="password" className="block text-sm font-medium leading-6">
-                Password
-              </label>
-            </div>
-            <div className="mt-2">
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="new-password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-
-          <div>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-50"
-            >
-              {isLoading ? 'Creating account...' : 'Sign up'}
-            </button>
-          </div>
-        </form>
-
-        <p className="mt-10 text-center text-sm text-gray-500">
-          Already have an account?{' '}
-          <Link
-            href="/sign-in"
-            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-sm" onSubmit={handleRegister}>
+        <h2 className="text-2xl font-bold mb-6 text-center">Register (Mock)</h2>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">WhatsApp</label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+            type="tel"
+            value={whatsapp}
+            onChange={e => setWhatsapp(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-6">
+          <label className="block text-gray-700 text-sm font-bold mb-2">Role</label>
+          <select
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+            value={role}
+            onChange={e => setRole(e.target.value)}
           >
-            Sign in
-          </Link>
-        </p>
-      </div>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        {error && <div className="mb-4 text-red-500 text-sm">{error}</div>}
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+          type="submit"
+        >
+          Register
+        </button>
+        <div className="mt-4 text-center">
+          <span>Already have an account? </span>
+          <a className="text-blue-600 hover:underline" href="/sign-in">Login</a>
+        </div>
+      </form>
     </div>
   );
 }

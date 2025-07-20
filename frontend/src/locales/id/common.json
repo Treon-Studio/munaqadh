@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Zycash Dashboard",
+    "title": "Munaqadh",
     "description": "Dashboard manajemen untuk Zycash"
   },
   "dashboard": {
@@ -12,7 +12,7 @@
   },
   "devices": {
     "page": {
-      "title": "Perangkat - Zycash Dashboard",
+      "title": "Perangkat - Munaqadh",
       "description": "Kelola dan pantau perangkat terhubung Anda"
     },
     "heading": "Perangkat",
@@ -127,7 +127,7 @@
     },
     "logout": {
       "title": "Anda akan logout",
-      "description": "Apakah Anda yakin akan logout dari Zycash Dashboard?",
+      "description": "Apakah Anda yakin akan logout dari Munaqadh?",
       "warning": "Anda harus login kembali",
       "cancel": "Tidak",
       "confirm": "Ya, Saya Yakin"

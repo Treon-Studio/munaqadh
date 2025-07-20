@@ -10,7 +10,7 @@ import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
-  title: 'Zycash Dashboard - Not Found',
+  title: 'Munaqadh - Not Found',
   description: 'Dashboard Zycash',
 };
 

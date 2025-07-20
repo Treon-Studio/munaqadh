@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Zycash Dashboard",
+    "title": "Munaqadh",
     "description": "Management dashboard for Zycash"
   },
   "dashboard": {
@@ -12,7 +12,7 @@
   },
   "devices": {
     "page": {
-      "title": "Devices - Zycash Dashboard",
+      "title": "Devices - Munaqadh",
       "description": "Manage and monitor your connected devices"
     },
     "heading": "Devices",
@@ -127,7 +127,7 @@
     },
     "logout": {
       "title": "You will be logged out",
-      "description": "Are you sure you want to logout from Zycash Dashboard?",
+      "description": "Are you sure you want to logout from Munaqadh?",
       "warning": "You'll have to login again",
       "cancel": "No",
       "confirm": "Yes, I'm sure"

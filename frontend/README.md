@@ -1,7 +1,7 @@
-# 🦜 Zycash Dashboard
+# 🦜 Munaqadh
 
 ## 📋 Detail
-Zycash Dashboard is a modern web dashboard built with Next.js 15+, Tailwind CSS 4, and TypeScript. It provides a robust foundation for scalable, maintainable, and beautiful web applications.
+Munaqadh is a modern web dashboard built with Next.js 15+, Tailwind CSS 4, and TypeScript. It provides a robust foundation for scalable, maintainable, and beautiful web applications.
 
 ## 📄 Product Requirement & Design
 
