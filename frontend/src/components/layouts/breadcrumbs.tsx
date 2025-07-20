@@ -6,13 +6,13 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/breadcrumb/breadcrumb';
+} from '@/components/ui/breadcrumb';
 
 import { useBreadcrumbs } from '@/hooks/use-breadcrumbs/use-breadcrumbs';
 import { Right } from '@icon-park/react';
 import { Fragment } from 'react';
-import SkeletonPreset from '../skeleton/skeleton-preset';
-import SkeletonBreadcrums from './skeleton-breadcrumbs';
+import SkeletonPreset from '@/components/skeleton/skeleton-preset';
+import SkeletonBreadcrums from '@/components/skeleton/skeleton-breadcrumbs';
 
 type BreadcrumbItemType = {
   title: string;

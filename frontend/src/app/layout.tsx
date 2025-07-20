@@ -57,7 +57,7 @@ export default async function RootLayout({
   const isScaled = activeThemeValue?.endsWith('-scaled');
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html className="scroll-smooth" suppressHydrationWarning lang="en">
       <body
         className={cn(
           'bg-background overflow-hidden overscroll-none font-sans antialiased',

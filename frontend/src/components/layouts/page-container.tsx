@@ -1,4 +1,4 @@
-import { ScrollArea } from '@/components/scroll-area/scroll-area';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import React from 'react';
 import Header from './header';
 

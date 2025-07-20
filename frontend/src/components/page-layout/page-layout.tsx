@@ -1,7 +1,7 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/libs/utils';
 import React from 'react';
-import SkeletonButton from '../button/skeleton-button';
+import SkeletonButton from '@/components/skeleton/skeleton-button';
 
 interface PageLayoutProps {
   title?: string;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { cn } from '@/libs/utils';
-import { Button } from '../../button/button';
+import { Button } from '@/components/ui/button';
 
 type EmptyStateVariant =
   | 'unauthorized'
