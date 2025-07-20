@@ -68,6 +68,19 @@ export default function RegisterPage() {
           <a className="text-blue-600 hover:underline" href="/sign-in">Login</a>
         </div>
       </form>
+      <div className="mt-8 p-6 bg-gray-100 border-2 border-gray-300 rounded-lg">
+        <h4 className="text-lg font-semibold text-gray-800 mb-4">Akun Demo:</h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base text-gray-700">
+          <div>
+            <p className="font-medium">Admin:</p>
+            <p>08123456789 / mockpassword</p>
+          </div>
+          <div>
+            <p className="font-medium">User:</p>
+            <p>08129876543 / mockuser</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,29 +1,13 @@
-export const dynamic = 'force-dynamic';
+import "@/styling/globals.css"
 
-if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
-  import('@/mocks/startMock');
-}
-
-import ClientAppShell from '@/components/layouts/ClientAppShell';
-import Providers from '@/components/layouts/providers';
-import { fontVariables } from '@/libs/font';
-import { getServerT } from '@/libs/server-i18n';
-import { cn } from '@/libs/utils';
-import type { Metadata, Viewport } from 'next';
-import { cookies } from 'next/headers';
+import type { Metadata } from "next"
 import { DM_Sans } from "next/font/google"
 
-import '@/styles/global.css';
-import { NuqsAdapter } from 'nuqs/adapters/next/app';
-
-import MockProvider from '@/app/MockProvider';
-import NextAuthProvider from '@/components/auth/NextAuthProvider';
-import SetAxiosToken from '@/components/auth/SetAxiosToken';
-
-const META_THEME_COLORS = {
-  light: '#ffffff',
-  dark: '#09090b',
-};
+import Navbar from "@/components/app/navbar"
+import ScrollToTop from "@/components/app/scroll-to-top"
+import SetStylingPref from "@/components/app/set-styling-pref"
+import { ThemeProvider } from "@/components/app/theme-provider"
+import { Toaster } from "@/components/ui/sonner"
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -31,52 +15,63 @@ const dmSans = DM_Sans({
   adjustFontFallback: false,
 })
 
-
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getServerT('common');
-  const title = await t('app.title');
-  const description = await t('app.description');
-
-  return {
-    title,
-    description,
-  };
+export const metadata: Metadata = {
+  title: {
+    default:
+      "Neobrutalism components - Start making neobrutalism layouts today",
+    template: `%s - Neobrutalism components`,
+  },
+  description:
+    "A collection of neobrutalism-styled components based on shadcn/ui.",
+  keywords: [
+    "neobrutalism",
+    "neobrutalism components",
+    "neobrutalism tailwind",
+    "react neobrutalism",
+    "react tailwind components",
+    "shadcn components",
+    "shadcn neobrutalism",
+  ],
+  authors: [{ name: "Samuel Breznjak", url: "https://github.com/ekmas" }],
+  openGraph: {
+    type: "website",
+    description:
+      "A collection of neobrutalism-styled components based on shadcn/ui.",
+    images: ["https://www.neobrutalism.dev/preview.png"],
+    url: "https://www.neobrutalism.dev/",
+    title: "Neobrutalism components",
+  },
+  metadataBase: new URL("https://www.neobrutalism.dev/"),
+  twitter: {
+    card: "summary_large_image",
+    title: "Neobrutalism components - Start making neobrutalism layouts",
+    description:
+      "A collection of neobrutalism-styled components based on shadcn/ui.",
+    images: ["https://www.neobrutalism.dev/preview.png"],
+    creator: "@samuelbreznjak",
+  },
 }
 
-export const viewport: Viewport = {
-  themeColor: META_THEME_COLORS.light,
-};
-
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  const cookieStore = await cookies();
-  const activeThemeValue = cookieStore.get('active_theme')?.value;
-  const isScaled = activeThemeValue?.endsWith('-scaled');
-
   return (
     <html className="scroll-smooth" suppressHydrationWarning lang="en">
-      <body
-        className={cn(
-          'bg-background overflow-hidden overscroll-none font-sans antialiased',
-          activeThemeValue ? `theme-${activeThemeValue}` : '',
-          isScaled ? 'theme-scaled' : '',
-          dmSans.className
-        )}
-      >
-        <NuqsAdapter>
-          <MockProvider>
-            <NextAuthProvider>
-              <SetAxiosToken />
-              <ClientAppShell>
-                <Providers activeThemeValue={activeThemeValue as string}>{children}</Providers>
-              </ClientAppShell>
-            </NextAuthProvider>
-          </MockProvider>
-        </NuqsAdapter>
+      <body className={dmSans.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            disableTransitionOnChange
+          >
+            <Navbar />
+            {children}
+            <SetStylingPref />
+            <ScrollToTop />
+            <Toaster />
+          </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

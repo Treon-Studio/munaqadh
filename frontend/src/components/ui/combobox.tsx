@@ -18,7 +18,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-import { cn } from "@/libs/utils"
+import { cn } from "@/lib/utils"
 
 const frameworks = [
   {

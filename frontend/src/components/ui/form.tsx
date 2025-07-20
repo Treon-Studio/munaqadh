@@ -16,7 +16,7 @@ import * as React from "react"
 
 import { Label } from "@/components/ui/label"
 
-import { cn } from "@/libs/utils"
+import { cn } from "@/lib/utils"
 
 const Form = FormProvider
 
