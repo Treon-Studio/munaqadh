@@ -1,0 +1,14 @@
+---
+import BaseHead from "@/shared/ui/layouts/BaseHead.astro";
+import BaseScript from "@/shared/ui/layouts/BaseScript.astro";
+import "@/shared/styles/globals.css";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead />
+  </head>
+  <body class="bg-base-50 flex flex-col min-h-svh mx-auto relative">
+    <main class="grow z-2 bg-[#f6f6f4] main-section"><slot /></main>
+  </body>
+</html>
