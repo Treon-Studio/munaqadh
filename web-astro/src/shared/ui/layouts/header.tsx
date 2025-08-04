@@ -185,7 +185,10 @@ export default function Header({ currentPage }: HeaderProps) {
               <Logo />
               
               {/* Desktop Navigation */}
-              <NavLinks currentPage={currentPage} />
+              <div className="flex items-center space-x-8">
+                <NavLinks currentPage={currentPage} />
+                <AuthButtons />
+              </div>
               
               {/* Mobile Menu Button */}
               <button
