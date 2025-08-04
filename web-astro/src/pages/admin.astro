@@ -1,0 +1,11 @@
+---
+import BaseLayout from "@/shared/ui/layouts/BaseLayout.astro";
+import AdminDashboard from "@/features/dashboard/admin-dashboard";
+import ProtectedRoute from "@/features/auth/components/protected-route";
+---
+
+<BaseLayout>
+    <ProtectedRoute requireAdmin={true}>
+        <AdminDashboard />
+    </ProtectedRoute>
+</BaseLayout>

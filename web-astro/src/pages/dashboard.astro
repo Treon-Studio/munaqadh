@@ -1,0 +1,11 @@
+---
+import BaseLayout from "@/shared/ui/layouts/BaseLayout.astro";
+import UserDashboard from "@/features/dashboard/user-dashboard";
+import ProtectedRoute from "@/features/auth/components/protected-route";
+---
+
+<BaseLayout>
+    <ProtectedRoute>
+        <UserDashboard />
+    </ProtectedRoute>
+</BaseLayout>
