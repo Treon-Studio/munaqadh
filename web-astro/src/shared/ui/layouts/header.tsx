@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import CenterUnderline from '@/shared/ui/base/center-underline';
 import svgPaths from '@/shared/ui/base/icons';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User, LogOut } from 'lucide-react';
+import { useAuth } from '@/features/auth/auth-context';
 
 interface HeaderProps {
-  currentPage?: 'home' | 'services' | 'contact';
+  currentPage?: 'home' | 'services' | 'contact' | 'donation';
 }
 
 function Logo() {
@@ -99,6 +100,67 @@ function MobileMenu({ isOpen, currentPage, onClose }: {
       <div className="px-[20px] py-[32px]">
         <NavLinks currentPage={currentPage} onNavClick={onClose} isMobile />
       </div>
+    </div>
+  );
+}
+
+function AuthButtons() {
+  const { isLoggedIn, user, isAdmin, login, logout } = useAuth();
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+
+  if (!isLoggedIn) {
+    return (
+      <div className="hidden md:flex items-center space-x-4">
+        <button
+          onClick={login}
+          className="text-white text-sm hover:text-[rgb(247,244,235)] transition-colors duration-200"
+        >
+          Login
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="hidden md:flex items-center space-x-4 relative">
+      <button
+        onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+        className="flex items-center space-x-2 text-white hover:text-[rgb(247,244,235)] transition-colors duration-200"
+      >
+        <User size={20} />
+        <span className="text-sm">{user?.firstName || user?.email}</span>
+      </button>
+      
+      {isUserMenuOpen && (
+        <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
+          <a
+            href="/dashboard"
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            onClick={() => setIsUserMenuOpen(false)}
+          >
+            Dashboard
+          </a>
+          {isAdmin && (
+            <a
+              href="/admin"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              onClick={() => setIsUserMenuOpen(false)}
+            >
+              Admin Panel
+            </a>
+          )}
+          <button
+            onClick={() => {
+              logout();
+              setIsUserMenuOpen(false);
+            }}
+            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2"
+          >
+            <LogOut size={16} />
+            <span>Logout</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 }

@@ -37,6 +37,6 @@ export async function trackEvent(userOrSession: User | Session, event: string) {
 			distinctId,
 			event,
 		});
-		await client.shutdownAsync();
+		await client.shutdown();
 	}
 }
